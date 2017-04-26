@@ -1,0 +1,16 @@
+extends ../layout
+block content
+    p Заполните название задачи и нажмите кнопку 
+        span.label.label-default Запустить
+    form.form-inline(ng-submit="main.timeStart()")
+        .form-group
+            .input-group
+                .input-group-addon {{main.curTime | secToTime}}
+                input#projectName.form-control(ng-model="main.projectName",
+                    required,
+                    name="projectName",
+                    placeholder="Название",
+                    ng-disabled="main.disabled")
+            button.btn.btn-primary(type="submit", ng-disabled="main.disabled") Запустить
+            button.btn.btn-primary(ng-click="main.stopTime()") Стоп
+    include ./listProject

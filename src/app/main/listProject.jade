@@ -1,0 +1,17 @@
+br
+br
+p Список выполненых задач:
+.form-group
+    .input-group
+        input#projectName.form-control(ng-model="main.searchText",
+            name="searchText",
+            placeholder="Найти")
+br
+ul.list-project
+    li.panel.panel-default(ng-repeat="(key, item) in main.list | orderBy:'-date' | filter:main.searchText") 
+        .panel-body
+            //- .pull-right.btn.btn-danger(ng-click="main.removeTask(item.date)")
+                span.glyphicon.glyphicon-trash
+            .time {{item.time | secToTime}}
+            .name {{item.name}}
+            
